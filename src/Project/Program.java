@@ -17,7 +17,7 @@ public class Program
     Program()
     {
         sentenceInput();
-        System.out.print("zdanie: " + sentence);
+        System.out.print("Sentence: " + sentence);
     }
 
     private void sentenceInput()
