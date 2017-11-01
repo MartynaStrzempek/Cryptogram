@@ -3,14 +3,14 @@ package Project;
 /**
  * Created by MyszkaMartynka on 2017-10-31.
  */
-public class SubstitutionCipher implements Cipher
+public class SubstitutionCipher
 {
-    public void encryption(String sentence)
+    public static void encryption()
     {
 
     }
-//    private String[] divideSentence()
+//    private String[] divideSentence(String sentence)
 //    {
-//        ;
+//
 //    }
 }
