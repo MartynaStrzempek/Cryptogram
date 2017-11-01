@@ -5,4 +5,5 @@ package Project;
  */
 public interface Cipher
 {
+    public void encryption(String sentence);
 }
