@@ -13,9 +13,7 @@ public class SubstitutionCipher
 {
     public static void encryption(String sentence)
     {
-        //divideSentence(sentence);
-        //Arrays.asList(divideSentence(sentence)).forEach(System.out::println);
-        substitutionWithAscii(divideSentence(sentence));
+        System.out.print("encrypted sentence: " + combineWords(substitutionWithAscii(divideSentence(sentence))));
     }
 
     private static String[] divideSentence(String sentence)
@@ -23,7 +21,7 @@ public class SubstitutionCipher
         return sentence.split(" ");
     }
 
-    private static void substitutionWithAscii (String[] separatedWords)
+    private static String[] substitutionWithAscii (String[] separatedWords)
     {
         for(int i = 0; i < separatedWords.length; i++)
         {
@@ -43,7 +41,6 @@ public class SubstitutionCipher
             for(int j = 0; j < listWithFirstChar.size(); j++)
             {
                 sum = sum + listWithFirstChar.get(j);
-                //System.out.print("znak: " + listWithFirstChar.get(j) + " ");
             }
 
             ///////////////////////////////////////////////////////////////////////////////
@@ -51,36 +48,27 @@ public class SubstitutionCipher
             for(int j = 0; j < separatedChars.length; j++)
             {
                 separatedChars[j] = separatedWords[i].charAt(j);
-                System.out.print(separatedChars[j] + " ");
             }
-            System.out.print("\n");
 
             int[] separatedCharsInInt = new int[separatedChars.length];
             for(int j = 0; j < separatedCharsInInt.length; j++)
             {
                 separatedCharsInInt[j] = (int) separatedChars[j];
-                System.out.print(j + " = " + separatedCharsInInt[j] + "\n");
             }
-            System.out.print("\n");
 
             /////////////////////////////////////////////////////////////////
 
             for(int j = 1; j < separatedCharsInInt.length; j++)
             {
                 separatedCharsInInt[j] += sum;
-                System.out.print(sum + " - " + j + " = "+ separatedCharsInInt[j] + " " + "\n");
                 sum++;
             }
-            System.out.print("\n");
 
             ////////////////////////////////////////
             for(int j = 0; j < separatedChars.length; j++)
             {
                 separatedChars[j] = (char) separatedCharsInInt[j];
-                System.out.print(j + " = " + separatedChars[j] + "\n");
             }
-            System.out.print("\n");
-
 
             StringBuilder builder = new StringBuilder();
             for(int j = 0; j < separatedChars.length; j++)
@@ -88,7 +76,21 @@ public class SubstitutionCipher
                 builder.append(separatedChars[j]);
             }
             separatedWords[i] = builder.toString();
-            System.out.println("word: " + separatedWords[i]);
         }
+        return separatedWords;
+    }
+
+    private static String combineWords(String[] separatedWords)
+    {
+        String encryptedSentence;
+
+        StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < separatedWords.length; i++)
+        {
+            builder.append(separatedWords[i]);
+            builder.append(" ");
+        }
+        encryptedSentence = builder.toString();
+        return encryptedSentence;
     }
 }
