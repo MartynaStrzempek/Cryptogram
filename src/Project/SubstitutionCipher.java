@@ -33,9 +33,6 @@ public class SubstitutionCipher
 
             int firstCharInInt = (int) firstChar;
 
-
-            //String.valueOf przerabia na stringa, chars() rozdziela stringa na znaki , toArray dodaje te znaki do tablicy
-            //int[] firstCharAsIntArray = String.valueOf(firstCharInInt).chars().mapToObj(integer -> (char)integer).toArray();
             LinkedList<Integer> listWithFirstChar = new LinkedList<Integer>();
             while (firstCharInInt > 0)
             {
@@ -51,35 +48,47 @@ public class SubstitutionCipher
 
             ///////////////////////////////////////////////////////////////////////////////
             char[] separatedChars = new char[separatedWords[i].length()];
-            for(int m = 0; m < separatedChars.length; m++)
+            for(int j = 0; j < separatedChars.length; j++)
             {
-                separatedChars[m] = separatedWords[i].charAt(m);
-                System.out.print(separatedChars[m] + " ");
+                separatedChars[j] = separatedWords[i].charAt(j);
+                System.out.print(separatedChars[j] + " ");
             }
             System.out.print("\n");
 
             int[] separatedCharsInInt = new int[separatedChars.length];
-            for(int n = 0; n < separatedCharsInInt.length; n++)
+            for(int j = 0; j < separatedCharsInInt.length; j++)
             {
-                separatedCharsInInt[n] = (int) separatedChars[n];
-                System.out.print(n + " = " + separatedCharsInInt[n] + "\n");
+                separatedCharsInInt[j] = (int) separatedChars[j];
+                System.out.print(j + " = " + separatedCharsInInt[j] + "\n");
             }
             System.out.print("\n");
 
             /////////////////////////////////////////////////////////////////
-            
-            for(int k = 1; k < separatedCharsInInt.length; k++)
+
+            for(int j = 1; j < separatedCharsInInt.length; j++)
             {
-                separatedCharsInInt[k] += sum;
-                System.out.print(sum + " - " + k + " = "+ separatedCharsInInt[k] + " " + "\n");
+                separatedCharsInInt[j] += sum;
+                System.out.print(sum + " - " + j + " = "+ separatedCharsInInt[j] + " " + "\n");
                 sum++;
             }
-
-
+            System.out.print("\n");
 
             ////////////////////////////////////////
+            for(int j = 0; j < separatedChars.length; j++)
+            {
+                separatedChars[j] = (char) separatedCharsInInt[j];
+                System.out.print(j + " = " + separatedChars[j] + "\n");
+            }
+            System.out.print("\n");
 
 
+            StringBuilder builder = new StringBuilder();
+            for(int j = 0; j < separatedChars.length; j++)
+            {
+                builder.append(separatedChars[j]);
+            }
+            separatedWords[i] = builder.toString();
+            System.out.println("word: " + separatedWords[i]);
         }
     }
 }
