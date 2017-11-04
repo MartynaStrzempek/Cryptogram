@@ -67,16 +67,15 @@ public class SubstitutionCipher
             System.out.print("\n");
 
             /////////////////////////////////////////////////////////////////
-
-            int[] newSeparatedCharsInInt = new int[separatedCharsInInt.length];
-            for(int k = 1; k < newSeparatedCharsInInt.length; k++)
+            
+            for(int k = 1; k < separatedCharsInInt.length; k++)
             {
-                newSeparatedCharsInInt[k] = separatedCharsInInt[k] + sum;
-                System.out.print(sum + " - " + k + " = "+ newSeparatedCharsInInt[k] + " " + "\n");
+                separatedCharsInInt[k] += sum;
+                System.out.print(sum + " - " + k + " = "+ separatedCharsInInt[k] + " " + "\n");
                 sum++;
             }
 
-            
+
 
             ////////////////////////////////////////
 
