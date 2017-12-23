@@ -20,13 +20,14 @@ public class Program
         System.out.print("Sentence: " + sentence);
         System.out.print("\n");
         SubstitutionCipher.encryption(sentence);
+        SwitchCipher.show(sentence);
     }
 
     private void sentenceInput()
     {
-//        System.out.print("Please, write the sentence, which you would like to cypher: ");
-//        Scanner reading = new Scanner(System.in);
-//        sentence = reading.nextLine();
-          sentence = "Ala ma kota";
+        System.out.print("Please, write the sentence, which you would like to cypher: ");
+        Scanner reading = new Scanner(System.in);
+        sentence = reading.nextLine();
+        sentence = "Ala ma kota";
     }
 }

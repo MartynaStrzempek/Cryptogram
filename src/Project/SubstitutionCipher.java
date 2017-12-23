@@ -1,10 +1,6 @@
 package Project;
 
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.stream.IntStream;
-
-import static jdk.nashorn.internal.objects.Global.print;
 
 /**
  * Created by MyszkaMartynka on 2017-10-31.
@@ -16,7 +12,9 @@ public class SubstitutionCipher
         System.out.print("encrypted sentence: " + combineWords(substitutionWithAscii(divideSentence(sentence))));
     }
 
-    private static String[] divideSentence(String sentence)
+    public static String[] getSplitSentence(String sentence) {return (substitutionWithAscii(divideSentence(sentence)));}
+
+    public static String[] divideSentence(String sentence)
     {
         return sentence.split(" ");
     }
@@ -30,7 +28,7 @@ public class SubstitutionCipher
             char firstChar = separatedWords[i].charAt(0);
 
             int firstCharInInt = (int) firstChar;
-
+            //separation first char in ASCII to chars
             LinkedList<Integer> listWithFirstChar = new LinkedList<Integer>();
             while (firstCharInInt > 0)
             {
@@ -38,44 +36,46 @@ public class SubstitutionCipher
                 firstCharInInt = firstCharInInt / 10;
             }
 
-            for(int j = 0; j < listWithFirstChar.size(); j++)
-            {
-                sum = sum + listWithFirstChar.get(j);
-            }
+                //sum of chars in ASCII
+                for(int j = 0; j < listWithFirstChar.size(); j++)
+                {
+                    sum = sum + listWithFirstChar.get(j);
+                }
 
-            ///////////////////////////////////////////////////////////////////////////////
-            char[] separatedChars = new char[separatedWords[i].length()];
-            for(int j = 0; j < separatedChars.length; j++)
-            {
-                separatedChars[j] = separatedWords[i].charAt(j);
-            }
+                    //separation chars in word
+                    char[] separatedChars = new char[separatedWords[i].length()];
+                    for(int j = 0; j < separatedChars.length; j++)
+                    {
+                        separatedChars[j] = separatedWords[i].charAt(j);
+                    }
 
-            int[] separatedCharsInInt = new int[separatedChars.length];
-            for(int j = 0; j < separatedCharsInInt.length; j++)
-            {
-                separatedCharsInInt[j] = (int) separatedChars[j];
-            }
+                        //change chars to ASCII
+                        int[] separatedCharsInInt = new int[separatedChars.length];
+                        for(int j = 0; j < separatedCharsInInt.length; j++)
+                        {
+                            separatedCharsInInt[j] = (int) separatedChars[j];
+                        }
 
-            /////////////////////////////////////////////////////////////////
+                            //encryption chars
+                            for(int j = 1; j < separatedCharsInInt.length; j++)
+                            {
+                                separatedCharsInInt[j] += sum;
+                                sum++;
+                            }
 
-            for(int j = 1; j < separatedCharsInInt.length; j++)
-            {
-                separatedCharsInInt[j] += sum;
-                sum++;
-            }
+                                //change ASCII to chars
+                                for(int j = 0; j < separatedChars.length; j++)
+                                {
+                                    separatedChars[j] = (char) separatedCharsInInt[j];
+                                }
 
-            ////////////////////////////////////////
-            for(int j = 0; j < separatedChars.length; j++)
-            {
-                separatedChars[j] = (char) separatedCharsInInt[j];
-            }
-
-            StringBuilder builder = new StringBuilder();
-            for(int j = 0; j < separatedChars.length; j++)
-            {
-                builder.append(separatedChars[j]);
-            }
-            separatedWords[i] = builder.toString();
+                                    //building string from chars
+                                    StringBuilder builder = new StringBuilder();
+                                    for(int j = 0; j < separatedChars.length; j++)
+                                    {
+                                        builder.append(separatedChars[j]);
+                                    }
+                                    separatedWords[i] = builder.toString();
         }
         return separatedWords;
     }
