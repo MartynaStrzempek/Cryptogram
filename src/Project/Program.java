@@ -20,7 +20,7 @@ public class Program
         System.out.print("Sentence: " + sentence);
         System.out.print("\n");
         SubstitutionCipher.encryption(sentence);
-        SwitchCipher.show(sentence);
+        SwitchCipher.maina(sentence);
     }
 
     private void sentenceInput()

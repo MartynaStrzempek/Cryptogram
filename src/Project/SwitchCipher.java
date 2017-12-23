@@ -1,5 +1,9 @@
 package Project;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by MyszkaMartynka on 2017-12-19.
  */
@@ -34,9 +38,9 @@ public class SwitchCipher
 //        mergedWordsInChars(mergeWords(SubstitutionCipher.getSplitSentence(sentence)));
 //    }
 
-    public static void show(String sentence){
-        podziel(mergedWordsInChars(mergeWords(SubstitutionCipher.getSplitSentence(sentence))), sentence);
-    }
+//    public static void show(String sentence){
+//        podziel(mergedWordsInChars(mergeWords(SubstitutionCipher.getSplitSentence(sentence))), sentence);
+//    }
 
     private static int losowaLiczba(){
         return (int) Math.floor(Math.random()* 5) + 3;
@@ -49,13 +53,20 @@ public class SwitchCipher
         return dzielnik = amountOfLetters / losowaLiczba();
     }
 
-    private static void podziel(char[] mergedWordsInChars, String sentence){
+    private static String[] podziel(String mergedWords, String sentence){
         int dzielnik = dzielnik(sentence);
-        int counter = dzielnik;
-        char[][] switchedSentence = new char[dzielnik][dzielnik + 1];
-        int index = 0;
-       
+        List<String> parts = new ArrayList<>();
+
+        int length = mergedWords.length();
+        for (int i = 0; i < length; i += dzielnik) {
+            parts.add(mergedWords.substring(i, Math.min(length, i + dzielnik)));
         }
+        return parts.toArray(new String[0]);
     }
+
+//    public static void maina(String sentence){
+//
+//        System.out.println("to: " + Arrays.toString(podziel(mergeWords(SubstitutionCipher.getSplitSentence(sentence)), sentence)));
+//    }
 }
 
