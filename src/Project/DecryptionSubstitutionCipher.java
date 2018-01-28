@@ -2,16 +2,12 @@ package Project;
 
 import java.util.LinkedList;
 
-public class SubstitutionCipher
+public class DecryptionSubstitutionCipher
 {
-    public static String[] getSplitSentence(String sentence)
+    public static String[] splitSentence (String sentence)
     {
-        return (substitutionWithAscii(divideSentence(sentence)));
-    }
-
-    public static String[] divideSentence(String sentence)
-    {
-        return sentence.split(" ");
+        String encryptedSentence = SubstitutionCipher.getEncryptedSentence(sentence);
+        return encryptedSentence.split(" ");
     }
 
     private static String[] substitutionWithAscii(String[] separatedWords)
@@ -54,7 +50,7 @@ public class SubstitutionCipher
             //encryption chars
             for (int j = 1; j < separatedCharsInInt.length; j++)
             {
-                separatedCharsInInt[j] += sum;
+                separatedCharsInInt[j] -= sum;
                 sum++;
             }
 
@@ -75,27 +71,8 @@ public class SubstitutionCipher
         return separatedWords;
     }
 
-    public static String combineWords(String[] separatedWords)
+    public static void decryption (String sentence)
     {
-        String encryptedSentence;
-
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < separatedWords.length; i++)
-        {
-            builder.append(separatedWords[i]);
-            builder.append(" ");
-        }
-        encryptedSentence = builder.toString();
-        return encryptedSentence;
-    }
-
-    public static void encryption(String sentence)
-    {
-        System.out.print("encrypted sentence: " + combineWords(substitutionWithAscii(divideSentence(sentence))));
-    }
-
-    public static String getEncryptedSentence (String sentence)
-    {
-        return combineWords(substitutionWithAscii(divideSentence(sentence)));
+        System.out.println("Decrypted sentence : " + SubstitutionCipher.combineWords(substitutionWithAscii(splitSentence(sentence))));
     }
 }

@@ -20,7 +20,7 @@ public class Program
         System.out.print("Sentence: " + sentence);
         System.out.print("\n");
         SubstitutionCipher.encryption(sentence);
-        SwitchCipher.maina(sentence);
+        DecryptionSubstitutionCipher.decryption(sentence);
     }
 
     private void sentenceInput()
@@ -28,6 +28,6 @@ public class Program
         System.out.print("Please, write the sentence, which you would like to cypher: ");
         Scanner reading = new Scanner(System.in);
         sentence = reading.nextLine();
-        sentence = "Ala ma kota";
+        //sentence = "Ala ma kota";
     }
 }
