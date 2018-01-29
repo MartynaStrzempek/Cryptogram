@@ -91,7 +91,7 @@ public class SubstitutionCipher
 
     public static void encryption(String sentence)
     {
-        System.out.print("encrypted sentence: " + combineWords(substitutionWithAscii(divideSentence(sentence))));
+        System.out.print("Encrypted sentence: " + combineWords(substitutionWithAscii(divideSentence(sentence))));
     }
 
     public static String getEncryptedSentence (String sentence)

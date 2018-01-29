@@ -28,6 +28,5 @@ public class Program
         System.out.print("Please, write the sentence, which you would like to cypher: ");
         Scanner reading = new Scanner(System.in);
         sentence = reading.nextLine();
-        //sentence = "Ala ma kota";
     }
 }

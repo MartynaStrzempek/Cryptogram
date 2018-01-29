@@ -73,6 +73,6 @@ public class DecryptionSubstitutionCipher
 
     public static void decryption (String sentence)
     {
-        System.out.println("Decrypted sentence : " + SubstitutionCipher.combineWords(substitutionWithAscii(splitSentence(sentence))));
+        System.out.println("\n" + "Decrypted sentence : " + SubstitutionCipher.combineWords(substitutionWithAscii(splitSentence(sentence))));
     }
 }
